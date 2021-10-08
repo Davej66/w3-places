@@ -1,28 +1,24 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>www.Places.com</title>
-    <style>
-      input {
-        height: 30px;
-        padding-left: 10px;
-        border-radius: 4px;
-        border: 1px solid rgb(186, 178, 178);
-        box-shadow: 0px 0px 12px #EFEFEF;
-      }
-    </style>
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYWVSgu5LSl8BmZLTpWVqjaEk8C7c2wD8&libraries=places"></script>>
+    <title>Places Search Boxx</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
+    <script src="assets/js/index.js"></script>
   </head>
   <body>
-    <input type="text" id="autocomplete"/>
+    <input
+      id="pac-input"
+      class="controls"
+      type="text"
+      placeholder="Search Box"
+    />
+    <div id="map"></div>
 
-    <script>
-      var input = document.getElementById('autocomplete');
-      var autocomplete = new google.maps.places.Autocomplete(input,{types: ['(cities)']});
-      google.maps.event.addListener(autocomplete, 'place_changed', function(){
-         var place = autocomplete.getPlace();
-      })
-      
-    </script>
+    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initAutocomplete&libraries=places&v=weekly"
+      async
+    ></script>
   </body>
 </html>
