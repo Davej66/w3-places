@@ -8,11 +8,26 @@
   </head>
   <body>
     <div id="map"></div>
-    <div id="map"></div>
-    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
-    <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYWVSgu5LSl8BmZLTpWVqjaEk8C7c2wD8&callback=initMap&libraries=localContext&v=beta&channel=2"
-      async
-    ></script>
+
+    <div class="place-types">
+      <input class="with-gap" name="type" type="radio" id="lodging" value="lodging" checked />
+      <label for="lodging">Lodging</label>
+  </div>
+  <div class="place-types">
+      <input class="with-gap" name="type" type="radio" id="restaurant" value="restaurant" />
+      <label for="restaurant">Restaurant</label>
+  </div>
+  <div class="place-types">
+      <input class="with-gap" name="type" type="radio" id="pharmacy" value="pharmacy" />
+      <label for="apotik">Pharmacy</label>
+  </div>
+  <div class="place-types">
+      <input class="with-gap" name="type" type="radio" id="ds" value="department_store" />
+      <label for="ds">Department Store</label>
+  </div>
+  <div id="map"></div>
+  <!-- Replace the value of the key parameter with your own API key. -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYWVSgu5LSl8BmZLTpWVqjaEk8C7c2wD8&libraries=places&callback=initMap" async defer></script>
+
   </body>
 </html>

@@ -96,3 +96,63 @@ function initMap() {
     zoom: 14,
   });
 }
+
+
+
+var map;
+var center = {
+        lat: 30.42130899999999,
+        lng: -87.2169149
+    };
+var markers = [];
+
+function initMap() {    
+
+    map = new google.maps.Map(document.getElementById('map'), {
+        center: center,
+        zoom: 15
+    });        
+    callService( map, 'lodging');    
+}
+
+function callback(results, status) {
+    if (status === google.maps.places.PlacesServiceStatus.OK) {
+        for (var i = 0; i < results.length; i++) {
+            createMarker(results[i]);
+        }
+    }
+}
+
+function createMarker(place) {
+    var placeLoc = place.geometry.location;
+    var marker = new google.maps.Marker({
+        map: map,
+        position: place.geometry.location
+    });    
+    markers.push(marker);
+}
+
+function callService( map, place) {
+	var service = new google.maps.places.PlacesService(map);
+    service.nearbySearch({
+        location: center,
+        radius: 500,
+        type: [place]
+    }, callback);
+}
+
+function clearMarker() {
+	for( var i = 0; i < markers.length; i++ ) {
+    	markers[i].setMap(null);
+    }
+}
+
+$( function () {
+
+	$('.place-types :radio').click( function () {    	
+        var plc = $( this ).val();
+        clearMarker();
+        callService( map, plc);
+    });
+    
+});
