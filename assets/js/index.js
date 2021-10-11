@@ -87,7 +87,7 @@ function initMap() {
       { type: "restaurant" },
       { type: "tourist_attraction" },
     ],
-    maxPlaceCount: 10,
+    maxPlaceCount: 12,
   });
 
   map = localContextMapView.map;
